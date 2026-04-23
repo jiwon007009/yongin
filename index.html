@@ -51,9 +51,10 @@
     }
 
     .header {
+      position: relative;
       display: grid;
       gap: 10px;
-      padding: 6px 4px 0;
+      padding: 6px 98px 0 4px;
     }
 
     .title-wrap h1 {
@@ -80,6 +81,14 @@
       white-space: nowrap;
       width: fit-content;
       font-size: 12px;
+    }
+
+    .header-mascot {
+      position: absolute;
+      right: 6px;
+      top: 0;
+      width: 82px;
+      filter: drop-shadow(0 10px 14px rgba(27, 83, 72, 0.18));
     }
 
     .tabs {
@@ -673,6 +682,11 @@
 
       .header {
         gap: 8px;
+        padding-right: 84px;
+      }
+
+      .header-mascot {
+        width: 70px;
       }
 
       .screen {
@@ -720,6 +734,7 @@
         <p>야간 주차장 공유 서비스 공모전용 모바일 프로토타입</p>
       </div>
       <div class="brand-badge">Android Mobile Prototype</div>
+      <img class="header-mascot" src="assets/yongin-mascot-cutout.png" alt="?⑹씤??留덉뒪肄뷀듃">
     </section>
 
     <nav class="tabs" aria-label="V-Parking 화면 탭">
