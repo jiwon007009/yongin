@@ -5,6 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>용인 V-Parking UI Demo</title>
   <style>
+    @font-face {
+      font-family: "SeoulAlrim";
+      src: url("./assets/fonts/SeoulAlrimTTF-Medium.ttf") format("truetype");
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "SeoulAlrim";
+      src: url("./assets/fonts/SeoulAlrimTTF-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "SeoulAlrim";
+      src: url("./assets/fonts/SeoulAlrimTTF-ExtraBold.ttf") format("truetype");
+      font-weight: 800;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "SeoulAlrim";
+      src: url("./assets/fonts/SeoulAlrimTTF-Heavy.ttf") format("truetype");
+      font-weight: 900;
+      font-style: normal;
+    }
+
     :root {
       --blue-900: #0f4c81;
       --blue-700: #1f6fb5;
@@ -30,10 +58,18 @@
       box-sizing: border-box;
     }
 
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: "Pretendard", "Noto Sans KR", "Segoe UI", sans-serif;
+      font-family: "SeoulAlrim", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      font-weight: 500;
       color: var(--slate-900);
       background:
         radial-gradient(circle at top left, rgba(67, 185, 127, 0.25), transparent 28%),
@@ -62,12 +98,14 @@
       font-size: clamp(24px, 7vw, 30px);
       line-height: 1.05;
       letter-spacing: -0.03em;
+      font-weight: 900;
     }
 
     .title-wrap p {
       margin: 8px 0 0;
       color: var(--slate-700);
       font-size: 13px;
+      font-weight: 500;
     }
 
     .brand-badge {
@@ -348,6 +386,7 @@
       font-size: 22px;
       line-height: 1.2;
       letter-spacing: -0.02em;
+      font-weight: 900;
     }
 
     .sheet-title span {
@@ -434,6 +473,7 @@
       font-size: 24px;
       line-height: 1.2;
       letter-spacing: -0.03em;
+      font-weight: 900;
     }
 
     .booking-hero p {
@@ -673,6 +713,7 @@
       font-size: 13px;
       text-align: center;
       padding-bottom: 8px;
+      font-weight: 500;
     }
 
     @media (max-width: 760px) {
