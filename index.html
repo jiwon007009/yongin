@@ -837,6 +837,132 @@
       filter: drop-shadow(0 5px 10px rgba(51, 91, 181, 0.2));
     }
 
+    .slot.unavailable {
+      background: rgba(234, 239, 249, 0.92);
+      border-style: dashed;
+      border-color: rgba(146, 163, 198, 0.34);
+    }
+
+    .slot.unavailable::before {
+      filter: grayscale(0.25) saturate(0.6) opacity(0.72);
+    }
+
+    .slot.unavailable .slot-code {
+      color: rgba(126, 144, 178, 0.9);
+    }
+
+    .slot-status {
+      position: absolute;
+      right: 8px;
+      bottom: 8px;
+      color: #7f8da8;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .empty-card {
+      display: grid;
+      justify-items: center;
+      gap: 12px;
+      padding: 20px 16px 18px;
+      text-align: center;
+      background:
+        radial-gradient(circle at top, rgba(77, 134, 255, 0.1), transparent 44%),
+        rgba(246, 249, 255, 0.92);
+    }
+
+    .empty-visual {
+      position: relative;
+      width: 112px;
+      height: 92px;
+    }
+
+    .empty-sign {
+      position: absolute;
+      left: 50%;
+      top: 2px;
+      width: 74px;
+      height: 74px;
+      border-radius: 22px;
+      transform: translateX(-50%) rotate(-8deg);
+      background: linear-gradient(180deg, #ffffff, #edf3ff);
+      border: 1px solid rgba(130, 154, 204, 0.18);
+      box-shadow: 0 16px 24px rgba(102, 120, 179, 0.14);
+    }
+
+    .empty-sign::before {
+      content: "";
+      position: absolute;
+      inset: 15px;
+      border-radius: 50%;
+      background:
+        linear-gradient(135deg, transparent 45%, #ff7b7b 45% 55%, transparent 55%),
+        radial-gradient(circle, rgba(255, 123, 123, 0.14) 0 48%, transparent 49%);
+      border: 4px solid #ff7b7b;
+    }
+
+    .empty-car {
+      position: absolute;
+      left: 12px;
+      bottom: 0;
+      width: 88px;
+      height: 30px;
+      border-radius: 14px 16px 10px 10px;
+      background: linear-gradient(180deg, #7aa4ff, #4d86ff);
+      box-shadow: 0 12px 18px rgba(77, 134, 255, 0.18);
+    }
+
+    .empty-car::before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      top: -10px;
+      width: 40px;
+      height: 18px;
+      border-radius: 12px 12px 4px 4px;
+      background: linear-gradient(180deg, #dce9ff, #ffffff);
+    }
+
+    .empty-car::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: -8px;
+      height: 12px;
+      background:
+        radial-gradient(circle, #2f4677 0 5px, transparent 6px) left center/24px 12px no-repeat,
+        radial-gradient(circle, #2f4677 0 5px, transparent 6px) right center/24px 12px no-repeat;
+    }
+
+    .empty-card strong {
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    .empty-actions {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .empty-actions .ghost-btn,
+    .empty-actions .primary-btn {
+      flex: 1;
+      width: auto;
+    }
+
+    .ghost-btn {
+      padding: 12px 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(130, 154, 204, 0.18);
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--ink-700);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
     .slot-code,
     .selected-tag {
       position: absolute;
@@ -1227,43 +1353,54 @@
             <div class="slot-map">
               <span class="entry">입구</span>
               <div class="slot-grid">
-                <div class="slot">
+                <div class="slot unavailable">
                   <span class="slot-code">A1</span>
+                  <span class="slot-status">사용 중</span>
                 </div>
-                <div class="slot available">
+                <div class="slot unavailable">
                   <span class="slot-code">A2</span>
+                  <span class="slot-status">사용 중</span>
                 </div>
-                <div class="slot">
+                <div class="slot unavailable">
                   <span class="slot-code">A3</span>
+                  <span class="slot-status">사용 중</span>
                 </div>
-                <div class="slot selected">
+                <div class="slot unavailable">
                   <span class="slot-code">A4</span>
-                  <span class="selected-tag">선택됨</span>
+                  <span class="slot-status">사용 중</span>
                 </div>
-                <div class="slot available">
+                <div class="slot unavailable">
                   <span class="slot-code">A5</span>
+                  <span class="slot-status">사용 중</span>
                 </div>
-                <div class="slot">
+                <div class="slot unavailable">
                   <span class="slot-code">A6</span>
+                  <span class="slot-status">사용 중</span>
                 </div>
-                <div class="slot available">
+                <div class="slot unavailable">
                   <span class="slot-code">A7</span>
+                  <span class="slot-status">사용 중</span>
                 </div>
-                <div class="slot">
+                <div class="slot unavailable">
                   <span class="slot-code">A8</span>
+                  <span class="slot-status">사용 중</span>
                 </div>
               </div>
             </div>
-            <div class="subsection">
-              <div class="parking-row">
-                <div class="slot-label">
-                  <strong>선택 좌석 A4</strong>
-                  <p class="muted">지하 1층 3번 구역 · QR 자동 개방</p>
-                </div>
-                <span class="chip green">즉시 예약</span>
+            <div class="subsection empty-card">
+              <div class="empty-visual" aria-hidden="true">
+                <div class="empty-sign"></div>
+                <div class="empty-car"></div>
+              </div>
+              <div>
+                <strong>지금 선택 가능한 자리가 없어요</strong>
+                <p class="muted">3층 전 좌석이 사용 중입니다. 다른 층을 보거나 빈자리 알림을 신청해 보세요.</p>
+              </div>
+              <div class="empty-actions">
+                <button class="ghost-btn" type="button">다른 층 보기</button>
+                <button class="primary-btn" type="button">빈자리 알림 받기</button>
               </div>
             </div>
-            <button class="primary-btn" type="button">A4 자리로 진행</button>
           </div>
         </div>
       </article>
