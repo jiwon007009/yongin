@@ -320,23 +320,11 @@
 
     .mini-car {
       position: absolute;
-      left: 78px;
-      bottom: 45px;
-      width: 52px;
-      height: 52px;
-      border-radius: 18px;
-      display: grid;
-      place-items: center;
-      background: rgba(255, 255, 255, 0.88);
-      border: 1px solid rgba(117, 145, 211, 0.16);
-      box-shadow: 0 12px 20px rgba(70, 109, 198, 0.18);
-      color: var(--blue-deep);
-      font-size: 28px;
-    }
-
-    .mini-car::before {
-      content: "🚗";
-      transform: translateY(-1px);
+      left: 72px;
+      bottom: 40px;
+      width: 64px;
+      height: 44px;
+      filter: drop-shadow(0 10px 16px rgba(70, 109, 198, 0.28));
     }
 
     .parking-pin {
@@ -1124,6 +1112,103 @@
         min-height: 520px;
       }
     }
+    .step-bar {
+      display: flex;
+      gap: 6px;
+    }
+
+    .step-bar .step {
+      flex: 1;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(137, 159, 207, 0.22);
+    }
+
+    .step-bar .step.done {
+      background: var(--blue);
+    }
+
+    .photo-area {
+      display: grid;
+      place-items: center;
+      gap: 6px;
+      height: 86px;
+      border-radius: 16px;
+      background: rgba(243, 246, 255, 0.8);
+      border: 1.5px dashed rgba(137, 159, 207, 0.38);
+      color: var(--ink-500);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .resv-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .resv-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(130, 154, 204, 0.12);
+    }
+
+    .resv-time {
+      display: grid;
+      gap: 2px;
+      min-width: 46px;
+      color: var(--ink-500);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .resv-info {
+      flex: 1;
+      display: grid;
+      gap: 2px;
+    }
+
+    .point-display {
+      text-align: center;
+      padding: 16px 0 4px;
+    }
+
+    .point-display .amount {
+      display: block;
+      font-size: 40px;
+      font-weight: 900;
+      color: var(--blue-deep);
+      letter-spacing: -0.04em;
+    }
+
+    .point-display .label {
+      font-size: 13px;
+      color: var(--ink-500);
+      margin-top: 6px;
+    }
+
+    .tx-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(137, 159, 207, 0.1);
+    }
+
+    .tx-row:last-child {
+      border-bottom: none;
+    }
+
+    .tx-earn {
+      color: var(--blue-deep);
+      font-weight: 900;
+      font-size: 13px;
+      white-space: nowrap;
+    }
   </style>
 </head>
 <body>
@@ -1154,7 +1239,7 @@
               <div class="map-phone"></div>
               <img class="welcome-mascot" src="./assets/welcome-mascot-final.png" alt="주차 안내 마스코트">
               <div class="car-strip"></div>
-              <div class="mini-car"></div>
+              <img class="mini-car" src="./assets/car-icon.svg" alt="자동차">
               <div class="parking-pin">P</div>
             </div>
             <div class="welcome-text">
@@ -1310,7 +1395,7 @@
             <div class="subsection">
               <div>
                 <strong>안내</strong>
-                <p class="muted" style="margin-top: 8px;">야간 시간대 빈 주차면을 시민에게 공유하는 공간입니다. QR 자동 개방으로 바로 입차할 수 있고, 예약 완료 시 포인트가 즉시 차감됩니다.</p>
+                <p class="muted" style="margin-top: 8px;">야간 시간대 빈 주차면을 시민에게 개방하는 공간입니다. QR 자동 개방으로 바로 입차할 수 있고, 예약 완료 시 포인트가 즉시 차감됩니다.</p>
               </div>
             </div>
             <div class="subsection">
@@ -1412,60 +1497,26 @@
             <span>5G 88%</span>
           </div>
           <div class="screen-inner">
-            <div class="booking-header">
-              <div class="back-row">
-                <span>←</span>
-                <strong class="screen-title" style="font-size: 16px;">예약 상세</strong>
-                <span>⎘</span>
-              </div>
+            <div class="back-row">
+              <span>←</span>
+              <strong class="screen-title" style="font-size: 16px;">내 주차면</strong>
+              <span>⋯</span>
             </div>
-            <section class="booking-card">
-              <div class="price-row">
-                <div>
-                  <div class="helper">주차 ID</div>
-                  <strong>#235416</strong>
-                </div>
-                <div class="chip blue">스포츠몰</div>
-              </div>
-              <div>
-                <div class="helper">주차 정보</div>
-                <h3 style="margin-top: 6px; font-size: 22px;">처인구청 옆 공영 주차면</h3>
-                <p class="muted" style="margin-top: 6px;">도보 3분 거리 · 목 22:00 - 금 08:00</p>
-              </div>
-              <div class="price-row">
-                <span class="helper">2시간 주차</span>
-                <strong>7,000원</strong>
-              </div>
-              <div class="price-row">
-                <span class="helper">세금</span>
-                <strong>0원</strong>
-              </div>
-              <div class="price-row">
-                <span class="helper">서비스 수수료</span>
-                <strong>500원</strong>
-              </div>
-              <div class="total-box">
-                <div class="price-row">
-                  <span>총 결제 금액</span>
-                  <strong class="time-amount">7,500원</strong>
-                </div>
-              </div>
-            </section>
             <section class="subsection">
               <div class="toggle-row">
                 <div>
-                  <strong>오늘 밤 공유 활성화</strong>
-                  <p class="muted" style="margin-top: 4px;">22:00부터 08:00까지 자동 공개 후 예약을 받습니다.</p>
+                  <strong>오늘 밤 개방 활성화</strong>
+                  <p class="muted" style="margin-top: 4px;">22:00부터 08:00까지 자동 개방 후 예약을 받습니다.</p>
                 </div>
-                <button class="toggle active" id="shareToggle" type="button" aria-label="공유 활성화 토글" aria-checked="true"></button>
+                <button class="toggle active" id="shareToggle" type="button" aria-label="개방 활성화 토글" aria-checked="true"></button>
               </div>
             </section>
             <section class="subsection">
-              <strong>이번 달 공유 현황</strong>
+              <strong>이번 달 개방 현황</strong>
               <div class="stats-row">
                 <div class="stat-card">
                   <span class="stat-value">12건</span>
-                  <span class="helper">공유 완료</span>
+                  <span class="helper">개방 완료</span>
                 </div>
                 <div class="stat-card">
                   <span class="stat-value">84%</span>
@@ -1478,21 +1529,182 @@
               </div>
             </section>
             <section class="subsection">
-              <strong>등록된 공유 공간</strong>
+              <strong>등록된 개방 공간</strong>
               <div class="field">
                 <span>기흥구 보정동 공영 주차면 1-12</span>
                 <span class="chip green">등록 완료</span>
               </div>
               <div class="field">
-                <span>공유 시간 22:00 ~ 익일 08:00</span>
+                <span>개방 시간 22:00 ~ 익일 08:00</span>
                 <span class="chip blue">수정</span>
               </div>
               <div class="field">
-                <span>1회 공유 예상 적립 1,250P</span>
+                <span>1회 개방 예상 적립 1,250P</span>
                 <span class="chip gold">안내</span>
               </div>
             </section>
-            <button class="primary-btn" type="button">다시 예약하기</button>
+            <button class="primary-btn" type="button">주차면 추가 등록</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 호스트 화면 1: 주차면 등록 -->
+      <article class="phone">
+        <div class="phone-screen">
+          <div class="status-bar">
+            <span>9:41</span>
+            <span>5G 88%</span>
+          </div>
+          <div class="screen-inner">
+            <div class="back-row">
+              <span>←</span>
+              <strong class="screen-title" style="font-size: 16px;">주차면 등록</strong>
+              <span></span>
+            </div>
+            <div class="step-bar">
+              <div class="step done"></div>
+              <div class="step"></div>
+              <div class="step"></div>
+            </div>
+            <div class="photo-area">
+              <span style="font-size: 22px;">📷</span>
+              <span>사진 추가 (최대 5장)</span>
+            </div>
+            <section class="subsection">
+              <div class="field">
+                <span class="muted">주소</span>
+                <span style="font-weight: 700; font-size: 12px;">기흥구 보정동 123-4</span>
+              </div>
+              <div class="field">
+                <span class="muted">공간 유형</span>
+                <span class="chip blue">상가 주차장</span>
+              </div>
+              <div class="field">
+                <span class="muted">총 면수</span>
+                <span style="font-weight: 700; font-size: 12px;">12면</span>
+              </div>
+              <div class="field">
+                <span class="muted">개방 가능 시간</span>
+                <span style="font-weight: 700; font-size: 12px;">22:00 ~ 익일 08:00</span>
+              </div>
+            </section>
+            <button class="primary-btn" type="button">다음 단계 →</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 호스트 화면 2: 예약 현황 -->
+      <article class="phone">
+        <div class="phone-screen">
+          <div class="status-bar">
+            <span>9:41</span>
+            <span>5G 88%</span>
+          </div>
+          <div class="screen-inner">
+            <div class="back-row">
+              <span>←</span>
+              <strong class="screen-title" style="font-size: 16px;">예약 현황</strong>
+              <span>⋯</span>
+            </div>
+            <div class="segment" style="display: grid; grid-template-columns: repeat(3,1fr); width: 100%;">
+              <span class="active">오늘</span>
+              <span>이번 주</span>
+              <span>전체</span>
+            </div>
+            <div class="resv-list">
+              <div class="resv-item">
+                <div class="resv-time">
+                  <span>22:00</span>
+                  <span>~24:00</span>
+                </div>
+                <div class="resv-info">
+                  <strong style="font-size: 13px;">용인 12가 3456</strong>
+                  <span class="muted">A-3 구역</span>
+                </div>
+                <span class="chip green">입차 완료</span>
+              </div>
+              <div class="resv-item">
+                <div class="resv-time">
+                  <span>23:00</span>
+                  <span>~01:00</span>
+                </div>
+                <div class="resv-info">
+                  <strong style="font-size: 13px;">경기 34나 7890</strong>
+                  <span class="muted">A-7 구역</span>
+                </div>
+                <span class="chip blue">예약 확정</span>
+              </div>
+              <div class="resv-item">
+                <div class="resv-time">
+                  <span>01:00</span>
+                  <span>~03:00</span>
+                </div>
+                <div class="resv-info">
+                  <strong style="font-size: 13px;">경기 56다 1234</strong>
+                  <span class="muted">A-5 구역</span>
+                </div>
+                <span class="chip gold">대기 중</span>
+              </div>
+            </div>
+            <section class="subsection" style="margin-top: auto;">
+              <div class="parking-row">
+                <span class="muted">오늘 예약 합계</span>
+                <strong style="color: var(--blue-deep);">3건 / 12면</strong>
+              </div>
+            </section>
+          </div>
+        </div>
+      </article>
+
+      <!-- 호스트 화면 3: 포인트 정산 -->
+      <article class="phone">
+        <div class="phone-screen">
+          <div class="status-bar">
+            <span>9:41</span>
+            <span>5G 88%</span>
+          </div>
+          <div class="screen-inner">
+            <div class="back-row">
+              <span>←</span>
+              <strong class="screen-title" style="font-size: 16px;">포인트 정산</strong>
+              <span>⋯</span>
+            </div>
+            <div class="point-display">
+              <span class="amount">15,000P</span>
+              <div class="label">이번 달 적립 포인트</div>
+            </div>
+            <section class="subsection">
+              <strong>적립 내역</strong>
+              <div class="tx-row">
+                <div>
+                  <div style="font-weight: 700; font-size: 12px;">4월 23일 야간 개방</div>
+                  <div class="muted">보정동 공영 · 2건</div>
+                </div>
+                <span class="tx-earn">+2,500P</span>
+              </div>
+              <div class="tx-row">
+                <div>
+                  <div style="font-weight: 700; font-size: 12px;">4월 22일 야간 개방</div>
+                  <div class="muted">보정동 공영 · 1건</div>
+                </div>
+                <span class="tx-earn">+1,250P</span>
+              </div>
+              <div class="tx-row">
+                <div>
+                  <div style="font-weight: 700; font-size: 12px;">4월 21일 야간 개방</div>
+                  <div class="muted">보정동 공영 · 3건</div>
+                </div>
+                <span class="tx-earn">+3,750P</span>
+              </div>
+              <div class="tx-row">
+                <div>
+                  <div style="font-weight: 700; font-size: 12px;">4월 20일 야간 개방</div>
+                  <div class="muted">보정동 공영 · 2건</div>
+                </div>
+                <span class="tx-earn">+2,500P</span>
+              </div>
+            </section>
+            <button class="primary-btn" type="button">포인트 사용하기</button>
           </div>
         </div>
       </article>
